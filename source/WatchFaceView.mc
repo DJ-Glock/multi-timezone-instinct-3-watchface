@@ -49,6 +49,8 @@ class WatchFaceView extends WatchUi.WatchFace {
         // Steps
         drawStepsCount(deviceContext);
 
+        drawTemperature(deviceContext);
+
         // Date
         drawDate(deviceContext);
     }
@@ -123,5 +125,15 @@ class WatchFaceView extends WatchUi.WatchFace {
 
         var text = Lang.format("Steps: $1$", [steps]);
         deviceContext.drawText(5, 25, Graphics.FONT_TINY, text, Graphics.TEXT_JUSTIFY_LEFT);
+    }
+
+    function drawTemperature(deviceContext as Dc) {
+        var currentConditions = Weather.getCurrentConditions();
+        var temperature = currentConditions.temperature;
+        var lowTemperature = currentConditions.lowTemperature;
+        var highTemperature = currentConditions.highTemperature;
+
+        var text = Lang.format("$1$°, $2$°/$3$°", [temperature.format("%2d"), lowTemperature.format("%2d"), highTemperature.format("%2d")]);
+        deviceContext.drawText(105, 45, Graphics.FONT_TINY, text, Graphics.TEXT_JUSTIFY_RIGHT);
     }
 }
