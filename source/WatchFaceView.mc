@@ -46,6 +46,9 @@ class WatchFaceView extends WatchUi.WatchFace {
         // Body battery
         drawBodyBattery(deviceContext);
 
+        // Steps
+        drawStepsCount(deviceContext);
+
         // Date
         drawDate(deviceContext);
     }
@@ -112,5 +115,13 @@ class WatchFaceView extends WatchUi.WatchFace {
         } else {
             return "-";
         }
-  }
+    }
+
+    function drawStepsCount(deviceContext as Dc) {
+        var rawSteps = ActivityMonitor.getInfo().steps;
+        var steps = rawSteps != null ? rawSteps : 0;
+
+        var text = Lang.format("Steps: $1$", [steps]);
+        deviceContext.drawText(5, 25, Graphics.FONT_TINY, text, Graphics.TEXT_JUSTIFY_LEFT);
+    }
 }
