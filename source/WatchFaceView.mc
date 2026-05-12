@@ -91,22 +91,26 @@ class WatchFaceView extends WatchUi.WatchFace {
     }
 
     function getBodyBattery() {
+        var bodybatt = null;
         if (
             Toybox has :SensorHistory &&
             Toybox.SensorHistory has :getBodyBatteryHistory
         ) {
-            var batteryHistory = Toybox.SensorHistory.getBodyBatteryHistory({
-                :period => 1,
-            });
-            
-            var bodybatt = batteryHistory.next().data;
-            if (bodybatt != null && bodybatt >= 0 && bodybatt <= 100) {
-                return bodybatt.format("%d");
-            } else {
-                return "-";
-            }
+            bodybatt = Toybox.SensorHistory.getBodyBatteryHistory({ :period => 1 });
         } else {
             return "N";
         }
-    }
+        if (bodybatt != null) {
+            bodybatt = bodybatt.next();
+        }
+        if (bodybatt != null) {
+            bodybatt = bodybatt.data;
+        }
+
+        if (bodybatt != null && bodybatt >= 0 && bodybatt <= 100) {
+            return bodybatt.format("%d");
+        } else {
+            return "-";
+        }
+  }
 }
