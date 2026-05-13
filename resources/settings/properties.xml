@@ -1,0 +1,15 @@
+<properties xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+
+    <property id="firstLocationName" type="string">UTC</property>
+    <property id="firstLocationLatitude" type="double">0</property>
+    <property id="firstLocationLongtitude" type="double">0</property>
+
+    <property id="secondLocationName" type="string"></property>
+    <property id="secondLocationLatitude" type="double">0</property>
+    <property id="secondLocationLongtitude" type="double">0</property>
+
+    <property id="thirdLocationName" type="string"></property>
+    <property id="thirdLocationLatitude" type="double">0</property>
+    <property id="thirdLocationLongtitude" type="double">0</property>
+
+</properties>

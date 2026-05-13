@@ -1,0 +1,45 @@
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+
+    <group id="firstLocation" title="First location" description="Please leave name empty if you don't want to show it. Longtitude should be negative for W. If you need UTC time, please set UTC as name.">
+        <setting propertyKey="@Properties.firstLocationName" title="First location name">
+            <settingConfig type="alphaNumeric" />
+        </setting>
+
+        <setting propertyKey="@Properties.firstLocationLatitude" title="Location latitude">
+            <settingConfig type="numeric" />
+        </setting>
+
+        <setting propertyKey="@Properties.firstLocationLongtitude" title="Location longtitude">
+            <settingConfig type="numeric" />
+        </setting>
+    </group>
+
+    <group id="secondLocation" title="Second location" description="Please leave name empty if you don't want to show it. Longtitude should be negative for W. If you need UTC time, please set UTC as name.">
+        <setting propertyKey="@Properties.secondLocationName" title="Location name">
+            <settingConfig type="alphaNumeric" />
+        </setting>
+
+        <setting propertyKey="@Properties.secondLocationLatitude" title="Location latitude">
+            <settingConfig type="numeric" />
+        </setting>
+
+        <setting propertyKey="@Properties.secondLocationLongtitude" title="Location longtitude">
+            <settingConfig type="numeric" />
+        </setting>
+    </group>
+
+    <group id="thirdLocation" title="Third location" description="Please leave name empty if you don't want to show it. Longtitude should be negative for W. If you need UTC time, please set UTC as name.">
+        <setting propertyKey="@Properties.thirdLocationName" title="Location name">
+            <settingConfig type="alphaNumeric" />
+        </setting>
+
+        <setting propertyKey="@Properties.thirdLocationLatitude" title="Location latitude">
+            <settingConfig type="numeric" />
+        </setting>
+
+        <setting propertyKey="@Properties.thirdLocationLongtitude" title="Location longtitude">
+            <settingConfig type="numeric" />
+        </setting>
+    </group>
+
+</settings>
