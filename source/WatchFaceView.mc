@@ -133,7 +133,7 @@ class WatchFaceView extends WatchUi.WatchFace {
         var lowTemperature = currentConditions.lowTemperature;
         var highTemperature = currentConditions.highTemperature;
 
-        var text = Lang.format("$1$°, $2$°/$3$°", [temperature.format("%2d"), lowTemperature.format("%2d"), highTemperature.format("%2d")]);
-        deviceContext.drawText(105, 45, Graphics.FONT_TINY, text, Graphics.TEXT_JUSTIFY_RIGHT);
+        var text = Lang.format("W: $1$°, $2$°/$3$°", [temperature.format("%2d"), lowTemperature.format("%2d"), highTemperature.format("%2d")]);
+        deviceContext.drawText(2, 45, Graphics.FONT_TINY, text, Graphics.TEXT_JUSTIFY_LEFT);
     }
 }
