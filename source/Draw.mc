@@ -6,29 +6,28 @@ using Toybox.Time;
 using Toybox.Time.Gregorian;
 
 class Draw {
-    static function drawMainTime(dc as Dc, x as Number, y as Number) {
+    static function drawMainTime(label as Toybox.WatchUi.Text) {
         var clockTime = System.getClockTime();
         var timeString = Lang.format("$1$:$2$", [clockTime.hour, clockTime.min.format("%02d")]);
-
-        dc.drawText(x, y, Graphics.FONT_NUMBER_HOT, timeString, Graphics.TEXT_JUSTIFY_CENTER);
+        label.setText(timeString);
     }
 
-    static function drawTime(name as String, location as Toybox.Position.Location, dc as Dc, x as Number, y as Number) {
+    static function drawTime(name as String, location as Toybox.Position.Location, label as Toybox.WatchUi.Text) {
         var moment = Gregorian.localMoment(location, Time.now());
         var info = Gregorian.info(moment, Time.FORMAT_SHORT);
         var timeString = Lang.format("$1$: $2$:$3$", [name, info.hour, info.min.format("%02d")]);
-        dc.drawText(x, y, Graphics.FONT_SMALL, timeString, Graphics.TEXT_JUSTIFY_CENTER);
+        label.setText(timeString);
     }
 
-    static function drawUtcTime(dc as Dc, x as Number, y as Number) {
+    static function drawUtcTime(label as Toybox.WatchUi.Text) {
         var utcNumber = Time.now().value();
         var utcMoment = new Time.Moment(utcNumber);
         var utcInfo = Gregorian.utcInfo(utcMoment, Time.FORMAT_MEDIUM);
         var utcTime = Lang.format("UTC: $1$:$2$", [utcInfo.hour, utcInfo.min.format("%02d")]);
-        dc.drawText(x, y, Graphics.FONT_SMALL, utcTime, Graphics.TEXT_JUSTIFY_CENTER);
+        label.setText(utcTime);
     }
 
-    static function drawDate(dc as Dc) {
+    static function drawDate(dateLabel as Toybox.WatchUi.Text, dayLabel as Toybox.WatchUi.Text) {
         var today = Gregorian.info(Time.now(), Time.FORMAT_MEDIUM);
         var todayLong = Gregorian.info(Time.now(), Time.FORMAT_LONG);
         var dateString = Lang.format(
@@ -38,13 +37,13 @@ class Draw {
             today.day.format("%02d"),
         ]);
 
-        dc.drawText(144, 10, Graphics.FONT_TINY, dateString, Graphics.TEXT_JUSTIFY_CENTER);
-        dc.drawText(144, 30, Graphics.FONT_TINY, todayLong.day_of_week, Graphics.TEXT_JUSTIFY_CENTER);
+        dateLabel.setText(dateString);
+        dayLabel.setText(todayLong.day_of_week);
     }
 
-    static function drawBodyBattery(dc as Dc) {
+    static function drawBodyBattery(label as Toybox.WatchUi.Text) {
         var text = Lang.format("Body: $1$%", [getBodyBattery()]);
-        dc.drawText(28, 5, Graphics.FONT_TINY, text, Graphics.TEXT_JUSTIFY_LEFT);
+        label.setText(text);
     }
 
     static function getBodyBattery() {
@@ -71,13 +70,13 @@ class Draw {
         }
     }
 
-    static function drawStepsCount(dc as Dc, steps as Number) {
+    static function drawStepsCount(label as Toybox.WatchUi.Text, steps as Number) {
         var text = Lang.format("Steps: $1$", [steps]);
-        dc.drawText(5, 25, Graphics.FONT_TINY, text, Graphics.TEXT_JUSTIFY_LEFT);
+        label.setText(text);
     }
 
-    static function drawTemperature(dc as Dc, temperature as Number, lowTemperature as Number, highTemperature as Number) {
+    static function drawTemperature(label as Toybox.WatchUi.Text, temperature as Number, lowTemperature as Number, highTemperature as Number) {
         var text = Lang.format("W: $1$°, $2$°/$3$°", [temperature.format("%2d"), lowTemperature.format("%2d"), highTemperature.format("%2d")]);
-        dc.drawText(2, 45, Graphics.FONT_TINY, text, Graphics.TEXT_JUSTIFY_LEFT);
+        label.setText(text);
     }
 }
