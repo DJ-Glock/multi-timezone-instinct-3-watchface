@@ -3,6 +3,14 @@ Watchface with 3 time zones by choice of user for Garmin Instinct 3 Solar. To co
 
 ![Example](screenshots/1.png)
 
+# Supported models:
+- Instinct 2
+- Instinct 2s
+- Instinct 2x
+- Instinct 3 45/50 / Instinct e45
+- Instinct e40
+- Instinct e45
+
 # Known issues:
 Mumbai time zone is wrong for some reason, but New Delhi is fine (+5:30 UTC).
 

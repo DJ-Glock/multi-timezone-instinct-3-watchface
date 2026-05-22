@@ -76,7 +76,7 @@ class Draw {
     }
 
     static function drawTemperature(label as Toybox.WatchUi.Text, temperature as Number, lowTemperature as Number, highTemperature as Number) {
-        var text = Lang.format("$1$°, $2$°/$3$°", [temperature.format("%2d"), lowTemperature.format("%2d"), highTemperature.format("%2d")]);
+        var text = Lang.format("$1$°, $2$/$3$°", [temperature.format("%2d"), lowTemperature.format("%2d"), highTemperature.format("%2d")]);
         label.setText(text);
     }
 }
