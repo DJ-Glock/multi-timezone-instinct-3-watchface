@@ -1,7 +1,7 @@
 # Description
 Watchface with 3 time zones by choice of user for Garmin Instinct 3 Solar. To configure timezone, user should set coordinates of the place (latitude, longtitude, degrees in numeric format like 10.10, -20.20) and set name using Garmin Connect app.
 
-![Example](screenshots/1.png)
+![Example](screenshots/Cover.png)
 
 # Supported models:
 - Instinct 2
