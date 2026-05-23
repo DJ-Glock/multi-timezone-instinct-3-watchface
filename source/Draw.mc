@@ -46,6 +46,12 @@ class Draw {
         label.setText(text);
     }
 
+    static function drawDeviceBattery(label as Toybox.WatchUi.Text) {
+        var level = getDeviceBattery().format("%d");
+        var text = Lang.format("Bat: $1$%", [level]);
+        label.setText(text);
+    }
+
     static function getBodyBattery() {
         var bodybatt = null;
         if (
@@ -68,6 +74,10 @@ class Draw {
         } else {
             return "-";
         }
+    }
+
+    static function getDeviceBattery() {
+        return System.getSystemStats().battery;
     }
 
     static function drawStepsCount(label as Toybox.WatchUi.Text, steps as Number) {

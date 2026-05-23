@@ -15,4 +15,3 @@ Watchface with 3 time zones by choice of user for Garmin Instinct 3 Solar. To co
 Mumbai time zone is wrong for some reason, but New Delhi is fine (+5:30 UTC).
 
 # Plans
-- Add configuration of fields (show device battery / body battery)

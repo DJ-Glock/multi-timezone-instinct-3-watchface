@@ -42,9 +42,14 @@ class WatchFaceView extends WatchUi.WatchFace {
         drawAdditionalLocationTime("second");
         drawAdditionalLocationTime("third");
         
-        // Body battery
+        // Battery info
+        var batteryType = Application.Properties.getValue("batteryType").toNumber();
         var batteryLabel = View.findDrawableById("batteryLabel") as Text;
-        Draw.drawBodyBattery(batteryLabel);
+        if (batteryType.equals(0)) {
+            Draw.drawBodyBattery(batteryLabel);
+        } else {
+            Draw.drawDeviceBattery(batteryLabel);
+        }
 
         // Steps
         var stepsCnt = ActivityMonitor.getInfo().steps;
