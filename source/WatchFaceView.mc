@@ -58,12 +58,23 @@ class WatchFaceView extends WatchUi.WatchFace {
         Draw.drawStepsCount(stepsLabel, steps);
 
         // Weather
-        var currentConditions = Weather.getCurrentConditions();
-        var temperature = currentConditions.temperature != null ? currentConditions.temperature : 0;
-        var lowTemperature = currentConditions.lowTemperature != null ? currentConditions.lowTemperature : 0;
-        var highTemperature = currentConditions.highTemperature != null ? currentConditions.highTemperature : 0;
         var weatherLabel = View.findDrawableById("weatherLabel") as Text;
-        Draw.drawTemperature(weatherLabel, temperature, lowTemperature, highTemperature);
+        var weatherText = "";
+        var currentConditions = Weather.getCurrentConditions();
+
+        if (currentConditions != null) {
+            var temperature = currentConditions.temperature != null ? currentConditions.temperature : 0;
+            var lowTemperature = currentConditions.lowTemperature != null ? currentConditions.lowTemperature : 0;
+            var highTemperature = currentConditions.highTemperature != null ? currentConditions.highTemperature : 0;
+            weatherText = Lang.format(
+                "$1$°, $2$/$3$°", 
+                [temperature.format("%2d"), lowTemperature.format("%2d"), highTemperature.format("%2d")]
+            );
+        } else {
+            weatherText = "No forecast";
+        }
+        
+        Draw.drawTemperature(weatherLabel, weatherText);
 
         // Date
         var dateLabel = View.findDrawableById("dateLabel") as Text;
