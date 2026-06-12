@@ -41,6 +41,10 @@ class Draw {
         dayLabel.setText(todayLong.day_of_week);
     }
 
+    static function drawEmptyTime(label as Toybox.WatchUi.Text) {
+        label.setText("");
+    }
+
     static function drawBodyBattery(label as Toybox.WatchUi.Text) {
         var text = Lang.format("Body: $1$%", [getBodyBattery()]);
         label.setText(text);
@@ -85,7 +89,7 @@ class Draw {
         label.setText(text);
     }
 
-    static function drawTemperature(label as Toybox.WatchUi.Text, text as String) {
+    static function drawWeather(label as Toybox.WatchUi.Text, text as String) {
         label.setText(text);
     }
 }

@@ -1,12 +1,17 @@
 <settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
 
-    <group id="batteryInfo" title="Battery info"
-        description="Choose type of battery to show: body or device battery.">
+    <group id="generalSettings" title="General settings" description="Battery and weather formats.">
         <setting propertyKey="@Properties.batteryType" title="Battery type">
             <settingConfig type="list">
                 <listEntry value="0">Body</listEntry>
                 <listEntry value="1">Device</listEntry>
+            </settingConfig>
+        </setting>
+        <setting propertyKey="@Properties.weatherFormat" title="Weather format">
+            <settingConfig type="list">
+                <listEntry value="0">Current weather condition, temperature.</listEntry>
+                <listEntry value="1">Current, Minimum/Maximum temperature</listEntry>
             </settingConfig>
         </setting>
     </group>

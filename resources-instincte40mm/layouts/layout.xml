@@ -14,6 +14,8 @@
         justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
     <label id="weatherLabel" x="2" y="45" font="Graphics.FONT_TINY"
         justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
+    <label id="temperatureLabel" x="2" y="65" font="Graphics.FONT_TINY"
+        justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE" />
     <label id="dateLabel" x="140" y="10" font="Graphics.FONT_TINY"
         justification="Graphics.TEXT_JUSTIFY_CENTER" color="Graphics.COLOR_WHITE" />
     <label id="dayLabel" x="140" y="30" font="Graphics.FONT_TINY"

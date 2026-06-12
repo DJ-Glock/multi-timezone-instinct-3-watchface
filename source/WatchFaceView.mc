@@ -59,22 +59,40 @@ class WatchFaceView extends WatchUi.WatchFace {
 
         // Weather
         var weatherLabel = View.findDrawableById("weatherLabel") as Text;
-        var weatherText = "";
+        var temperatureLabel = View.findDrawableById("temperatureLabel") as Text;
         var currentConditions = Weather.getCurrentConditions();
 
-        if (currentConditions != null) {
-            var temperature = currentConditions.temperature != null ? currentConditions.temperature : 0;
-            var lowTemperature = currentConditions.lowTemperature != null ? currentConditions.lowTemperature : 0;
-            var highTemperature = currentConditions.highTemperature != null ? currentConditions.highTemperature : 0;
-            weatherText = Lang.format(
-                "$1$°, $2$/$3$°", 
-                [temperature.format("%2d"), lowTemperature.format("%2d"), highTemperature.format("%2d")]
-            );
+        if (currentConditions == null) {
+            Draw.drawWeather(weatherLabel, "No forecast");
+            Draw.drawWeather(temperatureLabel, "");
         } else {
-            weatherText = "No forecast";
+            var weatherFormat = Application.Properties.getValue("weatherFormat").toNumber();
+            if (weatherFormat.equals(0)) {
+                var condition = WeatherParser.parseWeatherCondition(currentConditions.condition);
+                var temperature = currentConditions.temperature != null ? currentConditions.temperature : 0;
+                var temperatureText = Lang.format("$1$°", [temperature.format("%2d")]);
+                var weatherText = Lang.format("$1$ $2$", [condition, temperatureText]);
+
+                // Split long string
+                if (weatherText.length() > 14) {
+                    Draw.drawWeather(weatherLabel, condition);
+                    Draw.drawWeather(temperatureLabel, temperatureText);
+                } else {
+                    Draw.drawWeather(weatherLabel, weatherText);
+                    Draw.drawWeather(temperatureLabel, "");
+                }
+            } else {
+                var temperature = currentConditions.temperature != null ? currentConditions.temperature : 0;
+                var lowTemperature = currentConditions.lowTemperature != null ? currentConditions.lowTemperature : 0;
+                var highTemperature = currentConditions.highTemperature != null ? currentConditions.highTemperature : 0;
+                var weatherText = Lang.format(
+                    "$1$°, $2$/$3$°", 
+                    [temperature.format("%2d"), lowTemperature.format("%2d"), highTemperature.format("%2d")]
+                );
+                Draw.drawWeather(weatherLabel, weatherText);
+                Draw.drawWeather(temperatureLabel, "");
+            }
         }
-        
-        Draw.drawTemperature(weatherLabel, weatherText);
 
         // Date
         var dateLabel = View.findDrawableById("dateLabel") as Text;
@@ -99,6 +117,8 @@ class WatchFaceView extends WatchUi.WatchFace {
 
             var locationPosition = new Position.Location({:latitude => locationLatitude, :longitude => locationLongtitude, :format => :degrees});
             Draw.drawTime(name, locationPosition, label);
+        } else {
+            Draw.drawEmptyTime(label);
         }
     }
 }
